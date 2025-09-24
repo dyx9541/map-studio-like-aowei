@@ -1,0 +1,55 @@
+.message-container {
+  @apply flex flex-1 overflow-hidden;
+
+  .message-wrap {
+    @apply ml-3 flex flex-1 flex-col overflow-hidden;
+
+    .message-profile {
+      @apply mb-1 flex w-full text-xs;
+    }
+
+    .bubble {
+      @apply w-fit rounded-md p-2.5;
+      word-break: break-all;
+      background-color: var(--chat-bubble);
+    }
+
+    .suffix {
+      @apply ml-3 flex items-center;
+    }
+  }
+
+  .menu-wrap {
+    @apply flex w-fit;
+  }
+
+  &-sender {
+    @apply flex-row-reverse;
+
+    .message-wrap {
+      @apply mr-3 items-end;
+
+      .message-profile {
+        @apply flex-row-reverse;
+      }
+
+      .bubble {
+        background-color: var(--chat-bubble-sender);
+      }
+
+      .suffix {
+        @apply ml-0 mr-3;
+      }
+    }
+
+    .menu-wrap {
+      @apply flex-row-reverse;
+    }
+  }
+}
+
+.bubble {
+  word-wrap: break-word;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
