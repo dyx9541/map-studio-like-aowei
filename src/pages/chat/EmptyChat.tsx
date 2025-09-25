@@ -1,33 +1,11 @@
-import { Button, Layout } from "antd";
-import { useTranslation } from "react-i18next";
-
-import empty_chat_bg from "@/assets/images/empty_chat_bg.png";
-import emitter from "@/utils/events";
+import { Layout } from "antd";
 
 export const EmptyChat = () => {
-  const { t } = useTranslation();
-  const createNow = () => {
-    emitter.emit("OPEN_CHOOSE_MODAL", {
-      type: "CRATE_GROUP",
-    });
-  };
-
   return (
-    <Layout className="no-mobile flex items-center justify-center bg-white">
-      <div>
-        <div className="mb-12 flex flex-col items-center">
-          <div className="mb-3 text-xl font-medium">{t("placeholder.createGroup")}</div>
-          <div className="text-[var(--sub-text)]">
-            {t("placeholder.createGroupToast")}
-          </div>
-        </div>
-        <img src={empty_chat_bg} alt="" width={320} />
-
-        <div className="mt-28 flex justify-center">
-          <Button className="px-8" type="primary" onClick={createNow}>
-            {t("placeholder.createNow")}
-          </Button>
-        </div>
+    <Layout className="flex h-full items-center justify-center bg-white text-gray-400 dark:bg-[#1f1f1f]">
+      <div className="text-center">
+        <div className="text-xl font-semibold">中央内容区</div>
+        <p className="mt-2 text-sm">在这里放置你的地图或其他主要内容。</p>
       </div>
     </Layout>
   );
