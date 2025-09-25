@@ -1,62 +1,14 @@
-import { SessionType } from "@openim/wasm-client-sdk";
-import { useUnmount } from "ahooks";
 import { Layout } from "antd";
-import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
-
-import { useConversationStore } from "@/store";
-
-import ChatContent from "./ChatContent";
-import ChatFooter from "./ChatFooter";
-import ChatHeader from "./ChatHeader";
-import useConversationState from "./useConversationState";
 
 export const QueryChat = () => {
-  const currentConversation = useConversationStore(
-    (state) => state.currentConversation,
-  );
-  const updateCurrentConversation = useConversationStore(
-    (state) => state.updateCurrentConversation,
-  );
-
-  useConversationState();
-
-  const isNotificationSession =
-    currentConversation?.conversationType === SessionType.Notification;
-
-  useUnmount(() => {
-    updateCurrentConversation();
-  });
-
-  const switchFooter = () => {
-    if (isNotificationSession) {
-      return null;
-    }
-
-    return (
-      <>
-        <PanelResizeHandle />
-        <Panel
-          id="chat-footer"
-          order={1}
-          defaultSize={25}
-          maxSize={60}
-          className="min-h-[200px]"
-        >
-          <ChatFooter />
-        </Panel>
-      </>
-    );
-  };
-
   return (
-    <Layout id="chat-container" className="relative overflow-hidden">
-      <ChatHeader />
-      <PanelGroup direction="vertical">
-        <Panel id="chat-main" order={0}>
-          <ChatContent isNotificationSession={isNotificationSession} />
-        </Panel>
-        {switchFooter()}
-      </PanelGroup>
+    <Layout className="flex h-full flex-col bg-white p-6 dark:bg-[#1f1f1f]">
+      <header className="mb-4 text-lg font-semibold text-gray-700 dark:text-gray-200">
+        场景内容
+      </header>
+      <main className="flex flex-1 items-center justify-center rounded-md border border-dashed border-gray-300 text-gray-400 dark:border-gray-600">
+        在此区域渲染自定义的地图或功能模块。
+      </main>
     </Layout>
   );
 };
